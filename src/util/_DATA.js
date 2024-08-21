@@ -202,7 +202,15 @@ export function _saveQuestion (question) {
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((resolve, reject) => {
     if (!authedUser || !qid || !answer) {
-      reject("Error! Please provide all infor");
+      return reject("Error! Please provide all information");
+    }
+
+    if (!users[authedUser]) {
+      return reject("Error! User does not exist");
+    }
+
+    if (!questions[qid]) {
+      return reject("Error! Question does not exist");
     }
 
     setTimeout(() => {

@@ -3,8 +3,8 @@ describe("_saveQuestion &_saveQuestionAnswer", () => {
 
     it("Save question is success", async () => {
         const question = {
-            optionOneText: "Option 1 test",
-            optionTwoText: "Option 2 test",
+            optionOneText: "Option1test",
+            optionTwoText: "Option2test",
             author: {
                 id: "ThongNC",
                 name: "Thong Nguyen Canh",
@@ -31,7 +31,7 @@ describe("_saveQuestion &_saveQuestionAnswer", () => {
         const question = {
             loxhs1bqm25b708cmbf3g: {
                 id: 'loxhs1bqm25b708cmbf3g',
-                author: 'tylermcginnis',
+                author: 'johndoe',
                 timestamp: 1482579767190,
                 optionOne: {},
                 optionTwo: {}
@@ -42,15 +42,33 @@ describe("_saveQuestion &_saveQuestionAnswer", () => {
         expect(response).toBe("Please provide optionOneText, optionTwoText, and author");
     });
 
+    it("Save question answer with non-existing user returns error", async () => {
+        const response = await _saveQuestionAnswer({
+            authedUser: "NonExistingUser",
+            qid: "8xf0y6ziyjabvozdd253nd",
+            answer: "optionOne"
+        }).catch(e => e);
+
+        expect(response).toBe("Error! User does not exist");
+    });
 
     it("Save question and answer is success", async () => {
         const response = await _saveQuestionAnswer({
-            authedUser: "ThongNC",
+            authedUser: "sarahedo",
             qid: "8xf0y6ziyjabvozdd253nd",
             answer: "optionOne"
         });
 
         expect(response).toBeTruthy();
+    });
+    it("Save question with missing author returns error", async () => {
+        const question = {
+            optionOneText: "Option 1 test",
+            optionTwoText: "Option 2 test",
+        };
+        const response = await _saveQuestion(question).catch(e => e);
+
+        expect(response).toBe("Please provide optionOneText, optionTwoText, and author");
     });
 
     it("Save question and answer is error", async () => {
@@ -60,7 +78,17 @@ describe("_saveQuestion &_saveQuestionAnswer", () => {
             answer: ""
         }).catch(e => e);
 
-        expect(response).toBe("Error! Please provide all infor");
+        expect(response).toBe("Error! Please provide all information");
+    });
+
+    it("Save question with missing optionOneText returns error", async () => {
+        const question = {
+            optionTwoText: "Option 2 test",
+            author: "ThongNC",
+        };
+        const response = await _saveQuestion(question).catch(e => e);
+
+        expect(response).toBe("Please provide optionOneText, optionTwoText, and author");
     });
     
 });

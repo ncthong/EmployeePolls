@@ -36,33 +36,41 @@ const PollPage = ({ dispatch, authedUser, users, questions }) => {
     };
 
     return (
-        <div>
+        <div className="flex flex-col items-center p-6 bg-gray-50 min-h-screen">
             {question && author && (
-                <div>
-                    <h1 className="text-3xl font-bold mt-9 text-center">Poll by {author.id}</h1>
-                    <div className="flex justify-center">
-                        <img src={author.avatarURL} alt="Profile" className="h-24 w-24"/>
+                <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6">
+                    <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">Poll by {author.id}</h1>
+                    <div className="flex justify-center mb-4">
+                        <img src={author.avatarURL} alt="Profile" className="h-24 w-24 rounded-full border-2 border-gray-300"/>
                     </div>
-                    <div className="flex justify-center">
-                        <h2 className="text-2xl font-bold mt-6">Would you rather?</h2>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 mt-4">
-                        <div className={isVotedOne ? "bg-lime-600 text-center" : "bg-slate-200 text-center"}>
+                    <h2 className="text-2xl font-semibold text-center text-gray-700 mb-6">Would you rather?</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className={`p-4 rounded-lg text-center ${isVotedOne ? "bg-green-500 text-white" : "bg-gray-200"}`}>
                             <p className="font-bold mb-2">{question.optionOne.text}</p>
-                            {!isVotedOne && !isVotedTwo &&
-                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onClick={(e) => choiseAnswer(e, "1")}>Click</button>
-                            }
-                            {(isVotedOne || isVotedTwo ) && (
-                                <p className="text-red-800 font-bold">Votes: {question.optionOne.votes.length} ({calcVote("optionOne", question)})</p>
+                            {!isVotedOne && !isVotedTwo && (
+                                <button
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                                    onClick={(e) => choiseAnswer(e, "1")}
+                                >
+                                    Vote
+                                </button>
+                            )}
+                            {(isVotedOne || isVotedTwo) && (
+                                <p className="text-gray-800 font-bold mt-2">Votes: {question.optionOne.votes.length} ({calcVote("optionOne", question)})</p>
                             )}
                         </div>
-                        <div className={isVotedTwo ? "bg-lime-600 text-center" : "bg-slate-200 text-center"}>
+                        <div className={`p-4 rounded-lg text-center ${isVotedTwo ? "bg-green-500 text-white" : "bg-gray-200"}`}>
                             <p className="font-bold mb-2">{question.optionTwo.text}</p>
                             {!isVotedOne && !isVotedTwo && (
-                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onClick={(e) => choiseAnswer(e, "2")}>Click</button>
+                                <button
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                                    onClick={(e) => choiseAnswer(e, "2")}
+                                >
+                                    Vote
+                                </button>
                             )}
-                            {(isVotedOne || isVotedTwo ) && (
-                                <p className="text-red-800 font-bold">Votes: {question.optionTwo.votes.length} ({calcVote("optionTwo", question)})</p>
+                            {(isVotedOne || isVotedTwo) && (
+                                <p className="text-gray-800 font-bold mt-2">Votes: {question.optionTwo.votes.length} ({calcVote("optionTwo", question)})</p>
                             )}
                         </div>
                     </div>
@@ -70,6 +78,7 @@ const PollPage = ({ dispatch, authedUser, users, questions }) => {
             )}
         </div>
     );
+    
 };
 
 const mapStateToProps = ({ authedUser, users, questions }) => {

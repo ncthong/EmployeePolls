@@ -2,37 +2,47 @@ import {connect} from "react-redux";
 
 const Leaderboard = ({users}) => {
     return (
-        <div className="h-screen overflow-hidden flex items-center justify-center">
-            <table className="w-3/4 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" className="px-6 py-3">
-                        User
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                        Answered
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                        Created
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        users.map((user) => (
-                            <tr key={user.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <div className="h-screen overflow-hidden flex items-center justify-center bg-gray-100">
+            <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+                <table className="w-full text-sm text-left text-gray-600">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-200 border-b border-gray-300">
+                        <tr>
+                            <th scope="col" className="px-6 py-3 font-medium">
+                                User
+                            </th>
+                            <th scope="col" className="px-6 py-3 font-medium">
+                                Answered
+                            </th>
+                            <th scope="col" className="px-6 py-3 font-medium">
+                                Created
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user) => (
+                            <tr key={user.id} className="bg-white border-b border-gray-200 hover:bg-gray-50 transition-colors">
                                 <td className="px-6 py-4">
-                                    <span className="font-bold">{user.name}</span>
-                                    <br/>{user.id}</td>
-                                <td className="px-6 py-4">{Object.keys(user.answers).length}</td>
-                                <td className="px-6 py-4">{user.questions.length}</td>
+                                    <div className="flex items-center space-x-4">
+                                        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">
+                                            {user.name[0]}
+                                        </div>
+                                        <div>
+                                            <span className="font-semibold">{user.name}</span>
+                                            <br />
+                                            <span className="text-gray-500">{user.id}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="px-6 py-4 text-center font-medium">{Object.keys(user.answers).length}</td>
+                                <td className="px-6 py-4 text-center font-medium">{user.questions.length}</td>
                             </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
+    
 };
 
 const mapStateToProps = ({users}) => ({

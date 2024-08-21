@@ -19,41 +19,41 @@ const Home = ({authedUser, questions, users}) => {
         const handleChange = (event, newValue) => {
             setValue(newValue);
           };
-
     return (
-        <div>
+        <div className="container mx-auto p-4">
             <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <TabList onChange={handleChange} aria-label="lab API tabs example">
+                <div className="tabs-container border-b border-gray-300">
+                    <TabList onChange={handleChange} aria-label="Question tabs">
                         <Tab label="New Questions" value="1" />
                         <Tab label="Done" value="2" />
                     </TabList>
-                </Box>
+                </div>
                 <TabPanel value="1">
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-blue-200">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
                         {questions
                             .filter(unanswered)
                             .map((question) => (
-                                <li key={question.id}>
+                                <div key={question.id} className="question-item bg-white p-4 rounded-lg shadow-md">
                                     <UserCard question={question} author={users[question.author]}/>
-                                </li>
+                                </div>
                         ))}
-                    </ul>
+                    </div>
                 </TabPanel>
                 <TabPanel value="2">
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-blue-200">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
                         {questions
                             .filter(answered)
                             .map((question) => (
-                                <li key={question.id}>
+                                <div key={question.id} className="question-item bg-white p-4 rounded-lg shadow-md">
                                     <UserCard question={question} author={users[question.author]}/>
-                                </li>
+                                </div>
                         ))}
-                    </ul>
+                    </div>
                 </TabPanel>
             </TabContext>
         </div>
-    );
+    );    
+    
 }
 
 Home.propTypes = {

@@ -24,47 +24,64 @@ const NewPoll = ({dispatch}) => {
     };
 
     return (
-        <div>
-            <h1 className="text-3xl font-bold mt-9 text-center">Would You Rather</h1>
-            <h3 className="text-1xl mt-9 text-center">Create Your Own Poll</h3>
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={onSubmit}>
-                <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstOption" data-testid="firstLabel">
-                    First Option
-                </label>
-                <input 
-                    value={firstOption}
-                    onChange={(e) => inputOption(e, "1")}
-                    type="text"
-                    name="firstOption"
-                    id="firstOption"
-                    data-testid="firstOption"
-                    placeholder="First Option"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">Would You Rather</h1>
+            <h3 className="text-xl text-gray-600 mb-8">Create Your Own Poll</h3>
+            <form 
+                className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full"
+                onSubmit={onSubmit}
+            >
+                <div className="mb-6">
+                    <label 
+                        className="block text-gray-700 text-sm font-medium mb-2"
+                        htmlFor="firstOption"
+                        data-testid="firstLabel"
+                    >
+                        First Option
+                    </label>
+                    <input 
+                        value={firstOption}
+                        onChange={(e) => inputOption(e, "1")}
+                        type="text"
+                        name="firstOption"
+                        id="firstOption"
+                        data-testid="firstOption"
+                        placeholder="Enter the first option"
+                        className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                    />
                 </div>
                 <div className="mb-6">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="secondOption" data-testid="secondLabel">
-                    Second Option
-                </label>
-                <input 
-                    value={secondOption}
-                    onChange={(e) => inputOption(e, "2")}
-                    type="text"
-                    name="secondOption"
-                    id="secondOption"
-                    data-testid="secondOption"
-                    placeholder="Second Option"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                    <label 
+                        className="block text-gray-700 text-sm font-medium mb-2"
+                        htmlFor="secondOption"
+                        data-testid="secondLabel"
+                    >
+                        Second Option
+                    </label>
+                    <input 
+                        value={secondOption}
+                        onChange={(e) => inputOption(e, "2")}
+                        type="text"
+                        name="secondOption"
+                        id="secondOption"
+                        data-testid="secondOption"
+                        placeholder="Enter the second option"
+                        className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                    />
                 </div>
-                <div className="flex items-center justify-between">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" data-testid="submit-poll">
-                    Submit
-                </button>
+                <div className="flex items-center justify-center">
+                    <button 
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                        type="submit"
+                        data-testid="submit-poll"
+                    >
+                        Submit
+                    </button>
                 </div>
             </form>
-  
         </div>
     );
+    
 };
 
 export default connect()(NewPoll);
