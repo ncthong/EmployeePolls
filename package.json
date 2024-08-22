@@ -1,7 +1,6 @@
 {
   "name": "employee-polls",
   "version": "0.1.0",
-  "homepage":"https://ncthong.github.io/EmployeePolls",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -32,9 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
