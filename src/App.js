@@ -22,11 +22,11 @@ function App({dispatch, loggedIn}) {
         <div className="flex flex-col h-screen">
             {loggedIn && <Nav/>}
             <Routes>
-                <Route path="/login" exact element={<Login/>}/>
-                <Route path="/" element={<Router><Home/></Router>}/>
-                <Route path="/leaderboard" exact element={<Router><Leaderboard/></Router>}/>
-                <Route path="/questions/:id" element={<Router><PollPage/></Router>}/>
-                <Route path="/new" exact element={<Router><NewPoll/></Router>}/>
+                <Route path="/employee-polls/login" exact element={<Login/>}/>
+                <Route path="/employee-polls" element={<Router><Home/></Router>}/>
+                <Route path="/employee-polls/leaderboard" exact element={<Router><Leaderboard/></Router>}/>
+                <Route path="/employee-polls/questions/:id" element={<Router><PollPage/></Router>}/>
+                <Route path="/employee-polls/new" exact element={<Router><NewPoll/></Router>}/>
                 <Route path='*' element={<Error404 />} />
             </Routes>
             <Footer/>

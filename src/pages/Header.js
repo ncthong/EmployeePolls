@@ -36,19 +36,19 @@ const Header = ({ dispatch, authedUserId, avatarURL }) => {
       <div className={`w-full ${menuOpen ? "block" : "hidden"} lg:block lg:w-auto`}>
         <div className="flex flex-col lg:flex-row lg:space-x-4">
           <Link
-            to="/"
+            to="/employee-polls"
             className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-yellow-300 mr-4 text-xl cursor-pointer transition-colors"
           >
             Home
           </Link>
           <Link
-            to="/leaderboard"
+            to="/employee-polls/leaderboard"
             className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-yellow-300 mr-4 text-xl cursor-pointer transition-colors"
           >
             Leaderboard
           </Link>
           <Link
-            to="/new"
+            to="/employee-polls/new"
             className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-yellow-300 text-xl cursor-pointer transition-colors"
           >
             New

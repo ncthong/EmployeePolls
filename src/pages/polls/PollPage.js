@@ -103,7 +103,7 @@ const PollPage = ({ dispatch, authedUser, users, questions }) => {
           </div>
           <div className="mt-6 text-center">
             <Link
-              to="/"
+              to="/employee-polls"
               className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition-colors"
             >
               Back to Home

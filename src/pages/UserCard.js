@@ -20,7 +20,7 @@ const UserCard = ({ question, author }) => {
         </p>
       </div>
       <Link
-        to={`/questions/${question.id}`}
+        to={`/employee-polls/questions/${question.id}`}
         className="bg-white text-indigo-700 font-semibold py-2 px-4 rounded-full shadow-md hover:bg-indigo-700 hover:text-white transition-colors flex items-center space-x-2"
       >
         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">

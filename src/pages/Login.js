@@ -18,7 +18,7 @@ const Login = ({ dispatch, loggedIn }) => {
   if (loggedIn) {
     const urlParams = new URLSearchParams(window.location.search);
     const redirectUrl = urlParams.get("redirectTo");
-    return <Navigate to={redirectUrl ? redirectUrl : "/"} />;
+    return <Navigate to={redirectUrl ? redirectUrl : "/employee-polls"} />;
   }
 
   const handleUserChange = (e) => {

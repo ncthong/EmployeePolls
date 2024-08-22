@@ -20,7 +20,7 @@ const NewPoll = ({dispatch}) => {
             return;
         }
         dispatch(handleAddQuestion(firstOption, secondOption));
-        navigate("/", { replace: true });
+        navigate("/employee-polls", { replace: true });
     };
 
     return (
