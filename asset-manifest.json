@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/ncthong/EmployeePolls/static/css/main.505b9709.css",
-    "main.js": "/ncthong/EmployeePolls/static/js/main.f4d05f4a.js",
-    "index.html": "/ncthong/EmployeePolls/index.html",
-    "main.505b9709.css.map": "/ncthong/EmployeePolls/static/css/main.505b9709.css.map",
-    "main.f4d05f4a.js.map": "/ncthong/EmployeePolls/static/js/main.f4d05f4a.js.map"
+    "main.css": "/EmployeePolls/static/css/main.505b9709.css",
+    "main.js": "/EmployeePolls/static/js/main.f4d05f4a.js",
+    "index.html": "/EmployeePolls/index.html",
+    "main.505b9709.css.map": "/EmployeePolls/static/css/main.505b9709.css.map",
+    "main.f4d05f4a.js.map": "/EmployeePolls/static/js/main.f4d05f4a.js.map"
   },
   "entrypoints": [
     "static/css/main.505b9709.css",
