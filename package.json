@@ -1,7 +1,7 @@
 {
   "name": "employee-polls",
   "version": "0.1.0",
-  "homepage": "https://ncthong.github.io/ncthong/EmployeePolls",
+  "homepage":"https://ncthong.github.io/EmployeePolls",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.11.4",
