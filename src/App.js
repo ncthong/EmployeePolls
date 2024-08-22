@@ -23,7 +23,7 @@ function App({dispatch, loggedIn}) {
             {loggedIn && <Nav/>}
             <Routes>
                 <Route path="/login" exact element={<Login/>}/>
-                <Route path="/" element={<Router><Home/></Router>}/>
+                <Route path="/EmployeePolls" element={<Router><Home/></Router>}/>
                 <Route path="/leaderboard" exact element={<Router><Leaderboard/></Router>}/>
                 <Route path="/questions/:id" element={<Router><PollPage/></Router>}/>
                 <Route path="/new" exact element={<Router><NewPoll/></Router>}/>
