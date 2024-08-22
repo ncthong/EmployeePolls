@@ -22,7 +22,7 @@ const Home = ({ authedUser, questions, users }) => {
     setValue(newValue);
   };
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-2 sm:p-4">
       <TabContext value={value}>
         <div className="tabs-container border-b border-gray-300">
           <TabList onChange={handleChange} aria-label="Question tabs">
@@ -31,7 +31,7 @@ const Home = ({ authedUser, questions, users }) => {
           </TabList>
         </div>
         <TabPanel value="1">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             {questions.filter(unanswered).map((question) => (
               <div
                 key={question.id}
@@ -43,7 +43,7 @@ const Home = ({ authedUser, questions, users }) => {
           </div>
         </TabPanel>
         <TabPanel value="2">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             {questions.filter(answered).map((question) => (
               <div
                 key={question.id}
@@ -56,7 +56,7 @@ const Home = ({ authedUser, questions, users }) => {
         </TabPanel>
       </TabContext>
     </div>
-  );
+  );  
 };
 
 Home.propTypes = {

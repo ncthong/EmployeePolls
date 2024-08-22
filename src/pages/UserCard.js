@@ -11,8 +11,8 @@ const UserCard = ({ question, author }) => {
           alt={author?.name}
         />
       </div>
-      <div className="flex-grow">
-        <div className="text-xl font-semibold text-white">
+      <div className="flex-grow overflow-hidden">
+        <div className="text-xl font-semibold text-white truncate">
           {question.author}
         </div>
         <p className="text-sm text-gray-200 italic">
@@ -30,6 +30,7 @@ const UserCard = ({ question, author }) => {
       </Link>
     </div>
   );
+  
 };
 
 export default connect()(UserCard);
