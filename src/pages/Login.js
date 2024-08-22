@@ -1,87 +1,95 @@
-import {connect} from "react-redux";
-import {Navigate} from "react-router-dom";
-import {useState} from "react";
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { useState } from "react";
 import { handleLogin } from "../service/actions/authedUser";
-// import React, { useState } from "react";
-import '../login.css'; // Import file CSS
+import "../login.css"; // Import file CSS
 import PropTypes from "prop-types";
 
-const Login = ({dispatch, loggedIn}) => {
-    const [username, setUsername] = useState("thongnc");
-    const [password, setPassword] = useState("abc321");
+const users = [
+  { id: "thongnc", name: "Thong Nguyen Canh", password: "abc321" },
+  { id: "sarahedo", name: "Sarah Edo", password: "1234567" },
+  { id: "johndoe", name: "John Doe", password: "123123" },
+  { id: "zoshikanlu", name: "Zenobia Oshikanlu", password: "pass246" },
+];
 
-    if (loggedIn) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const redirectUrl = urlParams.get("redirectTo");
-        return <Navigate to={redirectUrl ? redirectUrl : "/"}/>;
+const Login = ({ dispatch, loggedIn }) => {
+  const [selectedUser, setSelectedUser] = useState(users[0]);
+
+  if (loggedIn) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUrl = urlParams.get("redirectTo");
+    return <Navigate to={redirectUrl ? redirectUrl : "/"} />;
+  }
+
+  const handleUserChange = (e) => {
+    const user = users.find((u) => u.id === e.target.value);
+    setSelectedUser(user);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!selectedUser.id || !selectedUser.password) {
+      alert("Please select a user!");
+      return;
     }
+    dispatch(handleLogin(selectedUser.id, selectedUser.password));
+  };
 
-    const changeInput = (e, option) => {
-        const value = e.target.value;
-        option === "username" ? setUsername(value) : setPassword(value);
-    };
+  return (
+    <div className="wrapper fadeInDown">
+      <div id="formContent">
+        {/* Tabs Titles */}
+        <h2 className="active" data-testid="login-heading">
+          Sign In
+        </h2>
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!username ||  !password) {
-            alert("Please input user name and password!");
-            return;
-        }
-        dispatch(handleLogin(username, password));
-        setUsername("");
-        setPassword("");
-    };
-
-    return (
-        <div className="wrapper fadeInDown">
-          <div id="formContent">
-            {/* Tabs Titles */}
-            <h2 className="active" data-testid="login-heading">Sign In</h2>
-    
-            {/* Login Form */}
-            <form onSubmit={handleSubmit}>
-              <input 
-                type="text" 
-                id="login" 
-                className="fadeIn second" 
-                name="username" 
-                placeholder="login" 
-                value={username} 
-                onChange={(e) => changeInput(e, "username")}
-                data-testid="username"
-              />
-              <input 
-                type="password" 
-                id="password" 
-                className="fadeIn third" 
-                name="password" 
-                placeholder="password" 
-                value={password} 
-                onChange={(e) => changeInput(e, "password")}
-                data-testid="password"
-              />
-              <input 
-                type="submit" 
-                className="fadeIn fourth" 
-                value="Log In" 
-                data-testid="loginBtn"
-              />
-            </form>
-                <div id="formFooter">
-                <a className="underlineHover" href="#">Forgot Password?</a>
-                </div>    
-          </div>
+        {/* Login Form */}
+        <form onSubmit={handleSubmit}>
+          <select
+            className="fadeIn second"
+            value={selectedUser.id}
+            onChange={handleUserChange}
+            data-testid="user-select"
+          >
+            {users.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.name}
+              </option>
+            ))}
+          </select>
+          <input
+            type="submit"
+            className="fadeIn fourth"
+            value="Log In"
+            data-testid="loginBtn"
+          />
+        </form>
+        <div id="formFooter">
+          <button
+            className="underlineHover"
+            onClick={() => alert("Feature not implemented yet")}
+            style={{
+              background: "none",
+              border: "none",
+              color: "inherit",
+              cursor: "pointer",
+            }}
+          >
+            Forgot Password?
+          </button>
         </div>
-      );
+      </div>
+    </div>
+  );
 };
 
 Login.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    loggedIn: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({authedUser}) => ({
-    loggedIn: !!authedUser,
+const mapStateToProps = ({ authedUser }) => ({
+  loggedIn: !!authedUser,
 });
 
 export default connect(mapStateToProps)(Login);
