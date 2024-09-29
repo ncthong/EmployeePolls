@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/employee-polls/static/css/main.505b9709.css",
+    "main.css": "/employee-polls/static/css/main.228fc304.css",
     "main.js": "/employee-polls/static/js/main.19c21a67.js",
     "index.html": "/employee-polls/index.html",
-    "main.505b9709.css.map": "/employee-polls/static/css/main.505b9709.css.map",
+    "main.228fc304.css.map": "/employee-polls/static/css/main.228fc304.css.map",
     "main.19c21a67.js.map": "/employee-polls/static/js/main.19c21a67.js.map"
   },
   "entrypoints": [
-    "static/css/main.505b9709.css",
+    "static/css/main.228fc304.css",
     "static/js/main.19c21a67.js"
   ]
 }
